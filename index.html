@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Animation</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <span class="logo">Travify</span>
+
+        <button class="hamburger-button" id="hamburger-button" onclick="toggleNavigation()">
+          <div class="hamburger-button__bar"></div>
+          <div class="hamburger-button__bar"></div>
+          <div class="hamburger-button__bar"></div>
+        </button>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav" id="nav">
+        <ul>
+          <li class="nav-item">Search</li>
+          <li class="nav-item">Premium</li>
+          <li class="nav-item">Contact</li>
+
+          <li class="nav-item nav-item__separator"></li>
+
+          <li class="nav-item nav-item--small">Sign up</li>
+          <li class="nav-item nav-item--small">Log in</li>
+        </ul>
+      </div>
+
+      <div class="backdrop"></div>
+    </nav>
+
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Experience is expensive</h1>
+
+      <p>Thousands of travel tours all over the world</p>
+
+      <button>Get started</button>
+
+      <img src="./circles.svg" alt="circle-background" class="background-image background-image--right">
+      <img src="./circles.svg" alt="circle-background" class="background-image background-image--left">
+
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">More tutorials at <a href="https://devchallenges.io/">devchallenges.io</a></div>
+  </footer>
+
+  <script>
+    const toggle = (elementId) => {
+      const element = document.getElementById(elementId);
+
+      if (element.classList.contains(elementId + "--open")) {
+        element.classList.remove(elementId + "--open")
+      } else {
+        element.classList.add(elementId + "--open")
+      }
+    }
+
+    const toggleNavigation = () => {
+      toggle("nav");
+      toggle("hamburger-button");
+    }
+  </script>
+</body>
+
+</html>
