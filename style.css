@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -67,7 +67,6 @@ Task 5:
 
 - Using keyframes, to animate h1 and p */
 
-
 /* NAVIGATION */
 
 .nav {
@@ -82,14 +81,16 @@ Task 5:
   background-color: black;
   color: white;
   padding: 32px;
+
+  transition: transform 0.4s ease-in-out;
 }
 
 .nav--open {
-  right: 0;
+  transform: translateX(-100%);
 }
 
 .nav--open + .backdrop {
-  display: block;
+  opacity: 1;
 }
 
 .backdrop {
@@ -104,7 +105,14 @@ Task 5:
   background: rgba(1, 1, 1, 0.5);
   z-index: 0;
 
-  display: none;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0.5s;
+
+  /* short-hand */
+  transition: opacity 0.5s ease-in-out 0.5s;
 }
 
 .nav-item {
@@ -145,6 +153,9 @@ Task 5:
   background-color: white;
   margin-top: 4px;
   border-radius: 2px;
+
+  transform-origin: 21px;
+  transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
 }
 
 .hamburger-button__bar:nth-child(1) {
@@ -152,12 +163,15 @@ Task 5:
 }
 
 .hamburger-button--open .hamburger-button__bar:nth-child(1) {
+  transform: rotate(-45deg);
 }
 
 .hamburger-button--open .hamburger-button__bar:nth-child(2) {
-} 
+  opacity: 0;
+}
 
 .hamburger-button--open .hamburger-button__bar:nth-child(3) {
+  transform: rotate(45deg);
 }
 
 /* MAIN */
@@ -174,13 +188,22 @@ main {
 
 main h1 {
   max-width: 800px;
-  font-size: clamp(3rem, 12vw, 5.5rem); ;
+  font-size: clamp(3rem, 12vw, 5.5rem);
   margin-bottom: 20px;
+
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
 }
 
 main p {
   margin-bottom: 60px;
   font-weight: 400;
+  transform: translateX(200px);
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 }
 
 main button {
@@ -193,16 +216,19 @@ main button {
   background-color: #f9bc60;
   color: #004643;
   cursor: pointer;
+
+  transition: transform 0.4s ease-in-out;
 }
 
 main button:hover {
+  transform: scale(1.5);
 }
 
 .background-image {
   position: fixed;
 
   z-index: 0;
-  
+
   width: 30vw;
 }
 
@@ -231,4 +257,19 @@ footer {
 
 footer a {
   color: #f9bc60;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
